@@ -1,9 +1,6 @@
-import fs from 'fs';
 import getPosts from '../build.js';
 
 export default function() {
-  const cssFileName = fs.readdirSync('./dist/assets/').find((file) => file.includes('.css'));
-
   const posts = getPosts();
   
   return /*html*/`
@@ -13,7 +10,7 @@ export default function() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LAB132 - IUT de Troyes</title>
-    <link rel="stylesheet" href="assets/${cssFileName}"/>
+    <link rel="stylesheet" href="/style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Margarine&display=swap" rel="stylesheet">
@@ -21,7 +18,7 @@ export default function() {
   <body class="flex flex-col justify-between min-h-screen">
     <nav class="w-full flex p-4 justify-around bg-primary">
         <a class="w-40" href="">
-            <img class="mt-4" src="assets/logo_lab132_wide.svg" alt="Logo Lab 132">
+            <img class="mt-4" src="/assets/logo_lab132_wide.svg" alt="Logo Lab 132">
         </a>
         <a href="#inscription">
             <div class="p-4 text-2xl margarine-regular">Inscription</div>
@@ -39,7 +36,7 @@ export default function() {
             <div class="p-4 text-2xl margarine-regular">Contact</div>
         </a>
     </nav>
-    <section id="main" class="grid grid-cols-3" style="background-color: #FFD203 !important; background: url('assets/Header_Image.webp') center center / cover no-repeat; width: 100%;">
+    <section id="main" class="grid grid-cols-3" style="background-color: #FFD203 !important; background: url('/assets/Header_Image.webp') center center / cover no-repeat; width: 100%;">
       ${posts.map(post => `
         <a href="/blog/${post.url}">
           <article class="flex flex-col bg-gray-950 bg-opacity-40 w-96 h-full p-6 rounded-xl">
@@ -54,12 +51,12 @@ export default function() {
     </section>
     <footer class="grid grid-cols-4 py-8 px-24">
         <div class="flex flex-col justify-center">
-            <img class="w-40 my-4" src="assets/logo_lab132_wide.svg" alt="Logo Lab 132">
+            <img class="w-40 my-4" src="/assets/logo_lab132_wide.svg" alt="Logo Lab 132">
             <b class="text-xl">2026</b>
         </div>
         <div class="flex flex-col justify-center">
             <a href="">
-                <img class="w-8" src="assets/logo_instagram.svg" alt="Instagram logo">
+                <img class="w-8" src="/assets/logo_instagram.svg" alt="Instagram logo">
             </a>
         </div>
         <div class="flex flex-col  justify-center">
@@ -71,7 +68,7 @@ export default function() {
         </div>
         <div class="flex flex-col">
             <p class="text-sm p-2">LAB 132 est entièrement géré par l'IUT de Troyes (URCA)</p>
-            <img src="assets/logo_iut_troyes_b.webp" class="p-2 w-32" style="filter: invert(1);" alt="Logo IUT de Troyes">
+            <img src="/assets/logo_iut_troyes_b.webp" class="p-2 w-32" style="filter: invert(1);" alt="Logo IUT de Troyes">
             <p class="text-sm p-2">&copy; 2026 | IUT de Troyes</p>
         </div>
     </footer>

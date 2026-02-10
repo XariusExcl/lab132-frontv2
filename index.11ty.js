@@ -1,0 +1,231 @@
+import getPosts from './build.js';
+
+export default function() {
+  const posts = getPosts();
+  
+  return /*html*/`
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB132 - IUT de Troyes</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Margarine&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="w-full flex p-4 justify-around bg-primary">
+        <a class="w-40" href="">
+            <img class="mt-4" src="/assets/logo_lab132_wide.svg" alt="Logo Lab 132">
+        </a>
+        <a href="#inscription">
+            <div class="p-4 text-2xl margarine-regular">Inscription</div>
+        </a>
+        <a href="#matos">
+            <div class="p-4 text-2xl margarine-regular">Matos</div>
+        </a>
+        <a href="">
+            <div class="p-4 text-2xl margarine-regular">Lieu</div>
+        </a>
+        <a href="">
+            <div class="p-4 text-2xl margarine-regular">Horaires</div>
+        </a>
+        <a href="#contact">
+            <div class="p-4 text-2xl margarine-regular">Contact</div>
+        </a>
+    </nav>
+    <section id="main" class="grid grid-cols-3" style="background-color: #FFD203 !important; background: url('/assets/Header_Image.webp') center center / cover no-repeat; width: 100%;">
+        <h1 class="hidden">LAB 132 - IUT de Troyes</h1>
+        <div class="flex justify-center p-8 col-start-2 col-end-2">
+            <div class="flex flex-col">
+                <div class="bg-secondary m-8 p-6 border-8 border-black">
+                    <img src="/assets/Logotype_Lab132_XCS.svg" width="320px" alt="lab132 logo">
+                </div>
+                <a href="#inscription" class="self-center">
+                    <div class="bg-secondary border-8 m-8 border-black rounded-full w-32 h-32">
+                        <svg class="pt-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:serif="http://www.serif.com/" width="100%" height="100%" viewBox="0 0 16 16" version="1.1" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                            <g transform="matrix(-1.038715,0,-0,-1.093628,15.883392,16.795727)">
+                                <path d="M6.465,5.819C6.73,5.482 7.147,5.284 7.59,5.284C8.032,5.284 8.449,5.482 8.714,5.819C9.554,6.882 10.714,8.353 11.664,9.556C11.984,9.961 12.035,10.502 11.797,10.954C11.559,11.406 11.072,11.692 10.54,11.692C8.754,11.692 6.451,11.692 4.661,11.692C4.125,11.692 3.634,11.404 3.394,10.948C3.155,10.492 3.206,9.947 3.528,9.539C4.476,8.339 5.629,6.877 6.465,5.819Z"/>
+                            </g>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="flex flex-col justify-between col-start-3 col-end-3">
+            <div class="bg-secondary border-8 my-16 p-8 border-black rounded-3xl margarine-regular text-2xl text-primary size-fit">
+                ${(() => {
+                    const now = new Date();
+                    const str = now.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"numeric",day:"numeric"}) + " : " + ((now.getDay() == 4)?"OUVERT":"Fermé");
+                    return str.charAt(0).toUpperCase() + String(str).slice(1);
+                })()}
+            </div>
+            <img class="self-end w-64 p-6" src="/assets/logo_iut_troyes_b.webp" alt="Logo IUT de Troyes">
+        </div>
+    </section>
+    <section class="relative" id="inscription">
+        <div class="flex justify-between p-24 pb-0">
+            <div class="flex-grow[2] flex flex-col">
+                <div>
+                    <h2 class="text-6xl pb-4">Infos pratiques</h2>
+                    <div class="p-4 pl-16 text-2xl">
+                        <img class="absolute left-0" src="/assets/accent_1.svg" alt="">
+                        <p class="p-4 margarine-regular">Nous sommes ouverts tous les jeudis après-midi.</p>
+                        <p class="p-4 margarine-regular">Bâtiment A, salle A132 (à côté de la B.U)</p>
+                        <p class="p-4 margarine-regular">Inscription falcultative</p>
+                        <p class="p-4 margarine-regular">L'usage des machines est gratuit</p>
+                    </div>
+                </div>
+                <div class="self-end w-2/3">
+                    <form action="" method="post" class="flex flex-col my-16">
+                        <img class="absolute left-16 w-16 mt-16" src="/assets/accent_2.svg" alt="">
+                        <div class="grid grid-cols-3 grid-rows-3" style="grid-template-columns: 48px 140px 3fr;">
+                            <img class="w-12 p-2 pb-0" src="/assets/icon_thumbprint.svg" alt="">
+                            <label class="p-4 pb-0 text-2xl margarine-regular" for="maker">Maker :</label>
+                            <input class="bg-transparent border-b border-white" type="text" name="maker" id="maker">
+                            <img class="w-12 p-2 pb-0" src="/assets/icon_calendar.svg" alt="">
+                            <label class="p-4 pb-0 text-2xl margarine-regular" for="maker">Date :</label>
+                            <input class="bg-transparent border-b border-white" type="text" name="date" id="date">
+                            <img class="w-12 p-2 pb-0" src="/assets/icon_cogs.svg" alt="">
+                            <label class="p-4 pb-0 text-2xl margarine-regular" for="maker">Machine :</label>
+                            <input class="bg-transparent border-b border-white" type="text" name="machine" id="machine">
+                        </div>
+                        <button type="submit" class="px-8 py-1 mt-8 rounded-xl border-2 self-end text-xl margarine-regular">Valider</button>
+                    </form>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <div class="flex flex-col self-end items-center margarine-regular mt-8 mr-24 text-2xl">
+                    <p>
+                        ${(() => {
+                            const str = new Date().toLocaleString("fr-FR", {month:"long"})
+                            return str.charAt(0).toUpperCase() + String(str).slice(1);
+                        })()}
+                    </p>
+                    <div class="grid grid-cols-7 grid-rows-6 mt-4" style="grid-template-columns:repeat(7, 2.75rem);grid-template-rows:2.75rem 1px repeat(5, 2.75rem);">
+                        <span class="m-auto">Lu</span>
+                        <span class="m-auto">Ma</span>
+                        <span class="m-auto">Me</span>
+                        <span class="m-auto">Je</span>
+                        <span class="m-auto">Ve</span>
+                        <span class="m-auto">Sa</span>
+                        <span class="m-auto">Di</span>
+                        <span class="row-start-2 col-start-1 col-end-8 border border-white"></span>
+                        ${(() => {
+                            const now = new Date();
+                            const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+                            // remap dow from 0=Sunday, 1=Monday... to Monday=0, Sunday=6
+                            let jsDay = firstDay.getDay();
+                            let offset = (jsDay + 6) % 7;
+                            let blanks = Array(offset).fill('<span></span>').join('');
+                            const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+                            let days = Array.from({length: daysInMonth}, (_, i) => `${(((i + offset) % 7)==3)?`<span class="w-full h-full bg-white text-primary rounded-full flex justify-center items-center">`:`<span class="m-auto">`}${i + 1}</span>`).join('');
+                            return blanks + days;
+                        })()}
+                    </div>
+                </div>
+                <div class="self-end relative -bottom-32 right-11 text-5xl margarine-regular">
+                    Inscription
+                </div>
+                <img class="absolute right-0 bottom-3 z-10"  src="/assets/accent_3a.svg" alt="">
+            </div>
+        </div>
+    </section>
+    <section id="matos" class="relative bg-secondary">
+        <img class="absolute top-0 right-1 w-64" src="/assets/accent_3b.svg" style="margin-top:-18.5rem" alt="">
+        <div class="grid" style="grid-template-columns: 30% 70%; height: 820px">
+            <div class="bg-primary"><video class="h-full" src=""></video></div>
+            <div class="grid grid-rows-3 p-8">
+                <img class="absolute origin-center w-72" style="transform: translate(110px, 10px) rotate(-6deg);" src="/assets/clip_cricut.svg" alt="">
+                <img class="absolute origin-center w-80" style="transform: translate(600px, 22px) rotate(0deg);" src="/assets/clip_xtool.svg" alt="">
+                <img class="absolute origin-center w-52" style="transform: translate(80px, 310px) rotate(-15deg);" src="/assets/clip_silkscreen.svg" alt="">
+                <img class="absolute origin-center w-52" style="transform: translate(390px, 240px) rotate(-5deg);" src="/assets/clip_embroidery.webp" alt="">
+                <img class="absolute origin-center w-64" style="transform: translate(290px, 510px) rotate(0deg);" src="/assets/clip_3dprinter.webp" alt="">
+                <h2 class="row-start-2 text-6xl mr-12 text-primary" style="place-self: center end;">Matos</h2>
+                <div class="w-80 row-start-3 place-self-end">
+                    <img src="/assets/hl_text.svg" alt="">
+                    <p class="relative -top-32 left-8 text-2xl w-80 text-primary margarine-regular">Découvre les machines en cliquant dessus !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="caroussel">
+        <div style="height: 50vh">
+            <div class="h-1/2">images</div>
+            <div class="h-1/2">images</div>
+        </div>
+    </section>
+    <section id="events">
+        <div class="bg-primary p-8">
+            <h2 class="text-6xl text-secondary pb-4">Évènements</h2>
+            <img class="absolute mt-52 right-12" src="/assets/accent_4.svg" alt="">
+            <div class="flex p-8 justify-around">
+                <div class="card w-96">
+                    <figure class="h-72 rounded-t-2xl" style="background-image: url('https://placehold.co/384x288');">
+                        <div class="relative top-4 left-4 inline-flex px-2 py-1 bg-secondary text-primary w-auto max-w-max margarine-regular">
+                            <div class="flex flex-col items-center">
+                                <div class="text-xl">20</div>
+                                <div class="text-lg -mt-2">Janv.</div>
+                            </div>
+                            <div class="w-px bg-primary self-stretch mx-2 my-2"></div>
+                            <div class="flex flex-col items-center">
+                                <div class="text-xl">20</div>
+                                <div class="text-lg -mt-2">Févr.</div>
+                            </div>
+                        </div>
+                    </figure>
+                    <div class="bg-secondary text-primary p-2 rounded-b-2xl">
+                        <h3 class="text-xl">Sérigraphie</h3>
+                        <p>Allez viens, on est bien ! Découvre l'atelier de folie à base de t-shirt graphique fait-main.</p>
+                        <hr class="m-0.5 mt-1 border-primary">
+                        <p class="text-xs p-1">Salle H009 | 14h - 17h</p>
+                        <div><span class="text-xs px-2 rounded-full border border-primary">ATELIER</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="bg-secondary text-primary">
+        <div class="flex flex-col items-center py-16">
+            <img class="absolute left-12" src="/assets/accent_5.svg" alt="">
+            <div class="w-1/3 flex flex-col items-center text-primary">
+                <p class="text-3xl p-8 margarine-regular">Des questions ?</p>
+                <p class="text-sm p-8">Laissez-nous un message, nous vous répondrons dès que possible.</p>
+                <form class="w-full flex flex-col" action="" method="post">
+                    <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" placeholder="Votre nom"/>
+                    <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" placeholder="Votre email"/>
+                    <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" placeholder="Votre téléphone"/>
+                    <textarea class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm h-36 resize-none" placeholder="Message" style="vertical-align: top;"></textarea>
+                    <button class="m-4" type="submit"><span class="text-xl text-white bg-primary py-2 px-12 rounded-full margarine-regular">Envoyer</span></button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer class="grid grid-cols-4 py-8 px-24">
+        <div class="flex flex-col justify-center">
+            <img class="w-40 my-4" src="/assets/logo_lab132_wide.svg" alt="Logo Lab 132">
+            <b class="text-xl">2026</b>
+        </div>
+        <div class="flex flex-col justify-center">
+            <a href="">
+                <img class="w-8" src="/assets/logo_instagram.svg" alt="Instagram logo">
+            </a>
+        </div>
+        <div class="flex flex-col  justify-center">
+            <p>IUT Troyes</p>
+            <p>9 rue de Québec</p>
+            <p>CS 90396</p>
+            <p>10026 Troyes Cedex</p>
+            <p>@iut.fr</p>
+        </div>
+        <div class="flex flex-col">
+            <p class="text-sm p-2">LAB 132 est entièrement géré par l'IUT de Troyes (URCA)</p>
+            <img src="/assets/logo_iut_troyes_b.webp" class="p-2 w-32" style="filter: invert(1);" alt="Logo IUT de Troyes">
+            <p class="text-sm p-2">&copy; 2026 | IUT de Troyes</p>
+        </div>
+    </footer>
+</body>
+</html>`
+}

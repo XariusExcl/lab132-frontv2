@@ -3,13 +3,13 @@ import markdownItContainer from "markdown-it-container";
 
 export const config = {
   dir: {
-    input: "blog/",
-    output: "dist/blog"
+    output: "dist/"
   }
 };
 
 export default function(eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
+  eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addFilter("date", function(date) {
     return new Date(date).toDateString();
   });
@@ -43,7 +43,6 @@ export default function(eleventyConfig) {
     }
   })});
   */
-
   
   eleventyConfig.amendLibrary("md", (md) => { md.use(markdownItContainer, "info", { render(tokens, idx) {
     var m = tokens[idx].info.trim().match(/^info\s+(.*)$/);
