@@ -1,0 +1,20 @@
+{
+  "name": "lab132-front",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": " npx tailwindcss -i style.css -o build/output.css && vite build && node build.js && npx @11ty/eleventy",
+    "build:blog": "node build.js && npx @11ty/eleventy",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "markdown-it-container": "^4.0.0"
+  }
+}

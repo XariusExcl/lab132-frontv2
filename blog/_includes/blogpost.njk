@@ -1,0 +1,27 @@
+---
+title: LAB132 -
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/assets/index-C6whr87f.css" />
+  <title>{{ title }}</title>
+  <meta name="title" content="{{ title }}" />
+  <meta name="description" content="{{ description }}" />
+  <link rel="icon" href="/favicon.png" />
+</head>
+<body class="flex flex-col justify-between min-h-screen">
+  <div id="content" class="flex flex-col w-full">
+      <div class="blog flex flex-col">
+        <article class="bg-gray-950 bg-opacity-40 w-full p-8 rounded-xl">
+          <h2 class="text-4xl font-bold">{{ title }}</h2>
+          <span><strong class="text-lg text-gray-600 italic pl-2 font-bold">{{ date|date() }}</strong></span>
+          {{ content | safe }}
+        </article>
+      </div>
+    </div>
+  </div>
+</body>
