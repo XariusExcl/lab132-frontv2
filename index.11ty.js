@@ -1,8 +1,12 @@
-import getPosts from './build.js';
+export function data() {
+    return {
+        eleventyImport: {
+            collections: ["events"]
+        }
+    }
+}
 
-export default function() {
-  const posts = getPosts();
-  
+export function render(data) {
   return /*html*/`
 <!DOCTYPE html>
 <html lang="fr">
@@ -162,28 +166,31 @@ export default function() {
             <h2 class="text-6xl text-secondary pb-4">Évènements</h2>
             <img class="absolute mt-52 right-12" src="/assets/accent_4.svg" alt="">
             <div class="flex p-8 justify-around">
-                <div class="card w-96">
-                    <figure class="h-72 rounded-t-2xl" style="background-image: url('https://placehold.co/384x288');">
-                        <div class="relative top-4 left-4 inline-flex px-2 py-1 bg-secondary text-primary w-auto max-w-max margarine-regular">
-                            <div class="flex flex-col items-center">
-                                <div class="text-xl">20</div>
-                                <div class="text-lg -mt-2">Janv.</div>
+                ${data.collections.events.map((event) => { 
+                    return `
+                    <div class="card w-96">
+                        <figure class="h-72 rounded-t-2xl" style="background-image: url('https://placehold.co/384x288');">
+                            <div class="relative top-4 left-4 inline-flex px-2 py-1 bg-secondary text-primary w-auto max-w-max margarine-regular">
+                                <div class="flex flex-col items-center">
+                                    <div class="text-xl">20</div>
+                                    <div class="text-lg -mt-2">Janv.</div>
+                                </div>
+                                <div class="w-px bg-primary self-stretch mx-2 my-2"></div>
+                                <div class="flex flex-col items-center">
+                                    <div class="text-xl">20</div>
+                                    <div class="text-lg -mt-2">Févr.</div>
+                                </div>
                             </div>
-                            <div class="w-px bg-primary self-stretch mx-2 my-2"></div>
-                            <div class="flex flex-col items-center">
-                                <div class="text-xl">20</div>
-                                <div class="text-lg -mt-2">Févr.</div>
-                            </div>
+                        </figure>
+                        <div class="bg-secondary text-primary p-2 rounded-b-2xl">
+                            <h3 class="text-xl">${event.data.title}</h3>
+                            <p>${event.data.description}</p>
+                            <hr class="m-0.5 mt-1 border-primary">
+                            <p class="text-xs p-1">Salle H009 | 14h - 17h</p>
+                            <div><span class="text-xs px-2 rounded-full border border-primary">ATELIER</span></div>
                         </div>
-                    </figure>
-                    <div class="bg-secondary text-primary p-2 rounded-b-2xl">
-                        <h3 class="text-xl">Sérigraphie</h3>
-                        <p>Allez viens, on est bien ! Découvre l'atelier de folie à base de t-shirt graphique fait-main.</p>
-                        <hr class="m-0.5 mt-1 border-primary">
-                        <p class="text-xs p-1">Salle H009 | 14h - 17h</p>
-                        <div><span class="text-xs px-2 rounded-full border border-primary">ATELIER</span></div>
-                    </div>
-                </div>
+                    </div>`
+                }).join("\n")}
             </div>
         </div>
     </section>
