@@ -1,0 +1,61 @@
+---
+title: LAB132 - IUT de Troyes
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="title" content="{{ title }}" />
+    <link rel="stylesheet" href="/style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Margarine&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="w-full flex p-4 justify-around bg-primary">
+        <a class="w-40" href="/">
+            <img class="mt-4" src="/assets/logo_lab132_wide.svg" alt="Logo Lab 132">
+        </a>
+        <a href="/#inscription">
+            <div class="p-4 text-2xl margarine-regular">Inscription</div>
+        </a>
+        <a href="/#matos">
+            <div class="p-4 text-2xl margarine-regular">Matos</div>
+        </a>
+        <a href="/blog">
+            <div class="p-4 text-2xl margarine-regular">Articles</div>
+        </a>
+        <a href="/#contact">
+            <div class="p-4 text-2xl margarine-regular">Contact</div>
+        </a>
+    </nav>
+    {{ content | safe }}
+    <footer class="grid grid-cols-4 py-8 px-24">
+        <div class="flex flex-col justify-center">
+            <img class="w-40 my-4" src="/assets/logo_lab132_wide.svg" alt="Logo Lab 132">
+            <b class="text-xl">2026</b>
+        </div>
+        <div class="flex flex-col justify-center">
+            <a href="">
+                <img class="w-8" src="/assets/logo_instagram.svg" alt="Instagram logo">
+            </a>
+        </div>
+        <div class="flex flex-col  justify-center">
+            <p>IUT Troyes</p>
+            <p>9 rue de Québec</p>
+            <p>CS 90396</p>
+            <p>10026 Troyes Cedex</p>
+            <p>@iut.fr</p>
+        </div>
+        <div class="flex flex-col">
+            <p class="text-sm p-2">LAB 132 est entièrement géré par l'IUT de Troyes (URCA)</p>
+            <a href="https://www.univ-reims.fr/iut-troyes/" target="_blank"><img src="/assets/logo_iut_troyes_b.webp" class="p-2 w-32" style="filter: invert(1);" alt="Logo IUT de Troyes"></a>
+            <p class="text-sm p-2">&copy; 2026 | IUT de Troyes</p>
+        </div>
+    </footer>
+    <script src="/main.js"></script> 
+</body>
+</html>`

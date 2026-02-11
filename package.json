@@ -4,11 +4,8 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "dev": "eleventy --serve && npx tailwindcss -i style.css -o dist/style.css --watch",
+    "dev": "eleventy --serve & npx tailwindcss -i style.css -o dist/style.css --watch",
     "build": "ELEVENTY_PRODUCTION=true eleventy && NODE_ENV=production npx tailwindcss -i style.css -o dist/style.css --minify"
-  },
-  "devDependencies": {
-    "vite": "^5.2.0"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",

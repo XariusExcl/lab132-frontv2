@@ -2,6 +2,132 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  .blog h1, .blog h2, .blog h3, .blog h4, .blog h5, .blog h6 {
+   @apply font-bold;
+  }
+
+  .blog h1 {
+    @apply text-6xl;
+    @apply my-4
+  }
+
+  .blog h2 {
+    @apply text-5xl;
+    @apply my-3
+  }
+
+  .blog h3 {
+    @apply text-4xl;
+    @apply my-2
+  }
+
+  .blog h4 {
+    @apply text-3xl;
+    @apply my-1
+  }
+
+  .blog h5 {
+    @apply text-2xl;
+  }
+
+  .blog h6 {
+    @apply text-xl;
+  }
+
+  .blog p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .blog a {
+    color: #FFD203;
+    text-decoration: none;
+  }
+
+  .blog a:hover {
+    text-decoration: underline;
+  }
+
+  .blog img {
+    max-width: 50%;
+    height: auto;
+  }
+
+  .blog blockquote {
+    border-left: 4px solid #FFD203;
+    background-color: #FFD20333;
+    padding-left: 1rem;
+    margin-left: 0;
+  }
+
+  .blog ul {
+    list-style-type: disc;
+    padding-left: 1rem;
+    margin-left: 0;
+  }
+
+  .blog ol {
+    list-style-type: decimal;
+    padding-left: 1rem;
+    margin-left: 0;
+  }
+
+  .blog hr {
+    border: 0;
+    border-top: 1px solid #4e5155;
+    margin: 1rem 0;
+  }
+
+  .blog code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    background-color: #FFD20333;
+    color: #d1d5db;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  .blog table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .blog th, td {
+    border: 1px solid #e2e8f0;
+    padding: 0.5rem;
+  }
+
+  .blog th {
+    background-color: #FFD20333;
+  }
+
+  .blog pre {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    background-color: #FFD20333;
+    color: #d1d5db;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+
+  .blog pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .blog .info {
+    border-left: 4px solid #FFD203;
+    background-color: #FFD20333;
+    color: #FFD203;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+    margin-left: 0;
+  }
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

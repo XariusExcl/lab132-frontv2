@@ -2,16 +2,20 @@
 
 Frontend pour le site LAB 132.
 
+## Technos
+
+- [11ty](https://www.11ty.dev/)
+- [tailwindcss (v3)](https://tailwindcss.com/)
+
 ## Prérequis
 
-- NodeJS >=18 & NPM >=10
+- NodeJS >=18 & NPM >=10.
 
 ## Installation
 
 - `npm i`
-- `npx tailwindcss -i style.css -o build/output.css`
+- `npm run dev`
 
 ## Build
 
 - `npm run build`
-- `npm run build:blog`
