@@ -13,6 +13,10 @@ title: LAB132 - IUT de Troyes
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Margarine&display=swap" rel="stylesheet">
+    <link rel="prefetch" href="/assets/creality.webm">
+    <link rel="prefetch" href="/assets/cricut.webm">
+    <link rel="prefetch" href="/assets/xtool.webm">
+    <link rel="prefetch" href="/assets/embroidery.webm">
 </head>
 <body>
     <nav class="w-full flex p-4 justify-around bg-primary">
@@ -33,29 +37,37 @@ title: LAB132 - IUT de Troyes
         </a>
     </nav>
     {{ content | safe }}
-    <footer class="grid grid-cols-4 py-8 px-24">
-        <div class="flex flex-col justify-center">
-            <img class="w-40 my-4" src="/assets/logo_lab132_wide.svg" alt="Logo Lab 132">
-            <b class="text-xl">2026</b>
+    <footer class="grid grid-cols-4 py-8 px-16">
+        <div class="flex flex-col justify-center items-center">
+            <img class="w-40 mt-4 mb-2" src="/assets/logo_lab132_wide.svg" alt="Logo Lab 132">
+            <div class="flex flex-row justify-center items-center">
+                <a class="p-2" href="">
+                    <img class="w-8" src="/assets/logo_instagram.svg" alt="logo Instagram">
+                </a>
+                <a class="p-2" href="">
+                    <img class="w-8" src="/assets/logo_pinterest.svg" alt="logo Pinterest">
+                </a>
+                <a class="p-2" href="">
+                    <img class="w-8" src="/assets/logo_youtube.svg" alt="logo Youtube">
+                </a>
+            </div>
+        </div>
+        <div class="flex flex-row justify-start items-center">
+            <a href="/reglement-interieur" class="text-sm">⬒ Règlement intérieur</a>
         </div>
         <div class="flex flex-col justify-center">
-            <a href="">
-                <img class="w-8" src="/assets/logo_instagram.svg" alt="Instagram logo">
-            </a>
-        </div>
-        <div class="flex flex-col  justify-center">
             <p>IUT Troyes</p>
             <p>9 rue de Québec</p>
             <p>CS 90396</p>
             <p>10026 Troyes Cedex</p>
             <p>@iut.fr</p>
         </div>
-        <div class="flex flex-col">
-            <p class="text-sm p-2">LAB 132 est entièrement géré par l'IUT de Troyes (URCA)</p>
+        <div class="flex flex-col justify-center">
             <a href="https://www.univ-reims.fr/iut-troyes/" target="_blank"><img src="/assets/logo_iut_troyes_b.webp" class="p-2 w-32" style="filter: invert(1);" alt="Logo IUT de Troyes"></a>
-            <p class="text-sm p-2">&copy; 2026 | IUT de Troyes</p>
+            <p class="text-xs p-2">&copy; 2025 - 2026 | IUT de Troyes</p>
+            <a href="https://github.com/XariusExcl/lab132-frontv2" target="_blank" class="text-xs p-2 underline">Code source</p>
         </div>
     </footer>
     <script src="/main.js"></script> 
 </body>
-</html>`
+</html>

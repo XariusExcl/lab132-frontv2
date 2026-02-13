@@ -29,8 +29,7 @@ export function render(data) {
             <div class="bg-secondary border-8 my-16 p-8 border-black rounded-3xl margarine-regular text-2xl text-primary size-fit">
                 ${(() => {
                     const now = new Date();
-                    const str = now.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"numeric",day:"numeric"}) + " : " + ((now.getDay() == 4)?"OUVERT":"Fermé");
-                    return str.charAt(0).toUpperCase() + String(str).slice(1);
+                    return this.capitalize(now.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"numeric",day:"numeric"}) + " : " + ((now.getDay() == 4)?"OUVERT":"Fermé"));
                 })()}
             </div>
             <img class="self-end w-64 p-6" src="/assets/logo_iut_troyes_b.webp" alt="Logo IUT de Troyes">
@@ -70,10 +69,7 @@ export function render(data) {
             <div class="flex flex-col">
                 <div class="flex flex-col self-end items-center margarine-regular mt-8 mr-24 text-2xl">
                     <p>
-                        ${(() => {
-                            const str = new Date().toLocaleString("fr-FR", {month:"long"})
-                            return str.charAt(0).toUpperCase() + String(str).slice(1);
-                        })()}
+                        ${this.capitalize(new Date().toLocaleString("fr-FR", {month:"long"}))}
                     </p>
                     <div class="grid grid-cols-7 grid-rows-6 mt-4" style="grid-template-columns:repeat(7, 2.75rem);grid-template-rows:2.75rem 1px repeat(5, 2.75rem);">
                         <span class="m-auto">Lu</span>
@@ -107,13 +103,15 @@ export function render(data) {
     <section id="matos" class="relative bg-secondary">
         <img class="absolute top-0 right-1 w-64" src="/assets/accent_3b.svg" style="margin-top:-18.5rem" alt="">
         <div class="grid" style="grid-template-columns: 30% 70%; height: 820px">
-            <div class="bg-primary"><video class="h-full" src=""></video></div>
+            <div class="bg-primary">
+                <video id="machineVideo" class="h-full w-full object-cover" src="/assets/xtool.webm" autoplay muted loop></video>
+            </div>
             <div class="grid grid-rows-3 p-8">
-                <img class="absolute origin-center w-72" style="transform: translate(110px, 10px) rotate(-6deg);" src="/assets/clip_cricut.svg" alt="">
-                <img class="absolute origin-center w-80" style="transform: translate(600px, 22px) rotate(0deg);" src="/assets/clip_xtool.svg" alt="">
-                <img class="absolute origin-center w-52" style="transform: translate(80px, 310px) rotate(-15deg);" src="/assets/clip_silkscreen.svg" alt="">
-                <img class="absolute origin-center w-52" style="transform: translate(390px, 240px) rotate(-5deg);" src="/assets/clip_embroidery.webp" alt="">
-                <img class="absolute origin-center w-64" style="transform: translate(290px, 510px) rotate(0deg);" src="/assets/clip_3dprinter.webp" alt="">
+                <img class="absolute origin-center w-72" style="transform: translate(110px, 10px) rotate(-6deg);" src="/assets/clip_cricut.svg" alt="" onmouseover="changeVideoSrc('/assets/cricut.webm')">
+                <img class="absolute origin-center w-80" style="transform: translate(600px, 22px) rotate(0deg);" src="/assets/clip_xtool.svg" alt="" onmouseover="changeVideoSrc('/assets/xtool.webm')">
+                <img class="absolute origin-center w-52" style="transform: translate(80px, 310px) rotate(-15deg);" src="/assets/clip_silkscreen.svg" alt="" onmouseover="changeVideoSrc('/assets/xtool.webm')">
+                <img class="absolute origin-center w-52" style="transform: translate(390px, 240px) rotate(-5deg);" src="/assets/clip_embroidery.webp" alt="" onmouseover="changeVideoSrc('/assets/embroidery.webm')">
+                <img class="absolute origin-center w-64" style="transform: translate(290px, 510px) rotate(0deg);" src="/assets/clip_3dprinter.webp" alt="" onmouseover="changeVideoSrc('/assets/creality.webm')">
                 <h2 class="row-start-2 text-6xl mr-12 text-primary" style="place-self: center end;">Matos</h2>
                 <div class="w-80 row-start-3 place-self-end">
                     <img src="/assets/hl_text.svg" alt="">
@@ -123,15 +121,30 @@ export function render(data) {
         </div>
     </section>
     <section id="caroussel">
-        <div style="height: 50vh">
-            <div class="h-1/2">images</div>
-            <div class="h-1/2">images</div>
+        <div class="h-72 flex carousel-track" style="width: max-content;">
+            <img class="sepia brightness-75" src="/assets/img_0.webp">
+            <img class="sepia brightness-75" src="/assets/img_1.webp">
+            <img class="sepia brightness-75" src="/assets/img_2.webp">
+            <img class="sepia brightness-75" src="/assets/img_3.webp">
+            <img class="sepia brightness-75" src="/assets/img_4.webp">
+            <img class="sepia brightness-75" src="/assets/img_5.webp">
+            <img class="sepia brightness-75" src="/assets/img_6.webp">
+        </div>
+        <div class="h-72 flex carousel-track-reverse" style="width: max-content;">
+            <img class="sepia brightness-75" src="/assets/img_7.webp">
+            <img class="sepia brightness-75" src="/assets/img_11.webp">
+            <img class="sepia brightness-75" src="/assets/img_8.jpg">
+            <img class="sepia brightness-75" src="/assets/img_12.webp">
+            <img class="sepia brightness-75" src="/assets/img_9.webp">
+            <img class="sepia brightness-75" src="/assets/img_10.webp">
+            <img class="sepia brightness-75" src="/assets/img_13.webp">
+            <img class="sepia brightness-75" src="/assets/img_14.webp">
         </div>
     </section>
     <section id="events">
-        <div class="bg-primary p-8">
+        <div class="relative bg-primary p-8">
             <h2 class="text-6xl text-secondary pb-4">Évènements</h2>
-            <img class="absolute mt-52 right-12" src="/assets/accent_4.svg" alt="">
+            <img class="absolute bottom-12 right-12" src="/assets/accent_4.svg" alt="">
             <div class="flex p-8 justify-around">
                 ${data.collections.events.map((event) => { 
                     return `
@@ -140,22 +153,28 @@ export function render(data) {
                             <figure class="h-72 rounded-t-2xl" style="background-image: url('https://placehold.co/384x288');">
                                 <div class="relative top-4 left-4 inline-flex px-2 py-1 bg-secondary text-primary w-auto max-w-max margarine-regular">
                                     <div class="flex flex-col items-center">
-                                        <div class="text-xl">20</div>
-                                        <div class="text-lg -mt-2">Janv.</div>
+                                        <span class="text-xl">${event.date.getDay()}</span>
+                                        <span class="text-lg -mt-2">${this.capitalize(event.date.toLocaleDateString("fr-FR", {month:"short"}))}</span>
                                     </div>
-                                    <div class="w-px bg-primary self-stretch mx-2 my-2"></div>
-                                    <div class="flex flex-col items-center">
-                                        <div class="text-xl">20</div>
-                                        <div class="text-lg -mt-2">Févr.</div>
-                                    </div>
+                                    ${((event.data.dateend != undefined) ?
+                                        `<div class="w-px bg-primary self-stretch mx-2 my-2"></div>
+                                        <div class="flex flex-col items-center">
+                                            <span class="text-xl">${event.data.dateend.getDay()}</span>
+                                            <span class="text-lg -mt-2">${this.capitalize(event.data.dateend.toLocaleDateString("fr-FR", {month:"short"}))}</span>
+                                        </div>`
+                                    :'')}
                                 </div>
                             </figure>
                             <div class="bg-secondary text-primary p-2 rounded-b-2xl">
                                 <h3 class="text-xl">${event.data.title}</h3>
                                 <p>${event.data.description}</p>
                                 <hr class="m-0.5 mt-1 border-primary">
-                                <p class="text-xs p-1">Salle H009 | 14h - 17h</p>
-                                <div><span class="text-xs px-2 rounded-full border border-primary">ATELIER</span></div>
+                                <p class="text-xs p-1">${event.data.location}</p>
+                                <div>
+                                    ${event.data.labels.split(" ").map((label) => {
+                                        return `<span class="text-xs px-2 rounded-full border border-primary">${label.toUpperCase()}</span>`
+                                    }).join("\n")}
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -173,12 +192,24 @@ export function render(data) {
                 <form class="w-full flex flex-col" action="" method="post">
                     <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" placeholder="Votre nom"/>
                     <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" placeholder="Votre email"/>
-                    <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" placeholder="Votre téléphone"/>
+                    <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" placeholder="Votre promo/parcours (MMI, GMP, CJ...)"/>
                     <textarea class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm h-36 resize-none" placeholder="Message" style="vertical-align: top;"></textarea>
                     <button class="m-4" type="submit"><span class="text-xl text-white bg-primary py-2 px-12 rounded-full margarine-regular">Envoyer</span></button>
                 </form>
             </div>
         </div>
     </section>
+    <script>
+        const machineVideo = document.getElementById('machineVideo');
+        const changeVideoSrc = (src) => {
+            if (machineVideo.src.includes(src)) return;
+            machineVideo.src = src;
+            machineVideo.play();
+        }
+        document.querySelectorAll('#caroussel > div').forEach((track, index) => {
+            const images = Array.from(track.querySelectorAll('img'));
+            images.forEach(img => track.appendChild(img.cloneNode(true)));
+        });
+    </script>
     `
 }

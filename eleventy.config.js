@@ -18,11 +18,9 @@ export default function(eleventyConfig) {
   eleventyConfig.addFilter("kebabCase", function(content) {
     return content.replace(/ /g, "-").toLowerCase();
   });
-  let options = {
-		html: true,
-		breaks: true,
-		linkify: true,
-	};
+  eleventyConfig.addFilter("capitalize", function(string) {
+    return string.charAt(0).toUpperCase() + String(string).slice(1);
+  })
   eleventyConfig.amendLibrary("md", (md) => { md.use(markdownItContainer, "spoiler", {
     validate: function(params) {
       return params.trim().match(/^spoiler\s+(.*)$/);
