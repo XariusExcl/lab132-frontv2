@@ -9,8 +9,8 @@ layout: main.njk
     <h1 class="text-7xl p-8 w-full text-primary text-center">{{ title }}</h1>
     <strong class="text-lg text-center text-primary opacity-80 italic pl-2 font-bold">{{ date|date() }}</strong></span>
 </section>
-<div id="content" class="flex flex-col w-full">
-    <div class="blog flex flex-col">
+<div id="content" class="flex flex justify-center w-full">
+    <div class="blog flex max-w-5xl">
       <article class="bg-primary w-full p-8 rounded-xl">
         {{ content | safe }}
       </article>
