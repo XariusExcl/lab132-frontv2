@@ -175,11 +175,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .carousel-track {
-    animation: scroll 40s linear infinite;
+    animation: scroll 60s linear infinite;
 }
 
 .carousel-track-reverse {
-    animation: scroll-reverse 40s linear infinite;
+    animation: scroll-reverse 60s linear infinite;
 }
 
 @keyframes scroll {
@@ -190,4 +190,12 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes scroll-reverse {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
+}
+
+.hover-accent .accent {
+  display: none;
+}
+
+.hover-accent:hover .accent {
+  display: block;
 }

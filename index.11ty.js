@@ -107,15 +107,40 @@ export function render(data) {
                 <video id="machineVideo" class="h-full w-full object-cover" src="/assets/xtool.webm" autoplay muted loop></video>
             </div>
             <div class="grid grid-rows-3 p-8">
-                <img class="absolute origin-center w-72" style="transform: translate(110px, 10px) rotate(-6deg);" src="/assets/clip_cricut.svg" alt="" onmouseover="changeVideoSrc('/assets/cricut.webm')">
-                <img class="absolute origin-center w-80" style="transform: translate(600px, 22px) rotate(0deg);" src="/assets/clip_xtool.svg" alt="" onmouseover="changeVideoSrc('/assets/xtool.webm')">
-                <img class="absolute origin-center w-52" style="transform: translate(80px, 310px) rotate(-15deg);" src="/assets/clip_silkscreen.svg" alt="" onmouseover="changeVideoSrc('/assets/xtool.webm')">
-                <img class="absolute origin-center w-52" style="transform: translate(390px, 240px) rotate(-5deg);" src="/assets/clip_embroidery.webp" alt="" onmouseover="changeVideoSrc('/assets/embroidery.webm')">
-                <img class="absolute origin-center w-64" style="transform: translate(290px, 510px) rotate(0deg);" src="/assets/clip_3dprinter.webp" alt="" onmouseover="changeVideoSrc('/assets/creality.webm')">
-                <h2 class="row-start-2 text-6xl mr-12 text-primary" style="place-self: center end;">Matos</h2>
-                <div class="w-80 row-start-3 place-self-end">
-                    <img src="/assets/hl_text.svg" alt="">
-                    <p class="relative -top-32 left-8 text-2xl w-80 text-primary margarine-regular">Découvre les machines en cliquant dessus !</p>
+                <div class="absolute origin-center w-72" style="transform: translate(110px, 10px) rotate(-6deg);" onmouseover="changeVideoSrc('/assets/cricut.webm')">
+                    <div class="relative hover-accent">
+                        <img class="absolute accent" style="transform: translate(-27px, 51px) scale(0.7);" src="/assets/accent_cricut.svg">
+                        <img class="absolute" src="/assets/clip_cricut.svg" alt="cricut clipart">
+                    </div>
+                </div>
+                <div class="absolute origin-center w-80" style="transform: translate(600px, 22px) rotate(0deg);" onmouseover="changeVideoSrc('/assets/xtool.webm')">
+                    <div class="relative hover-accent">
+                        <img class="absolute accent" style="transform: translate(-4px, -24px) scale(0.8);" src="/assets/accent_xtool.svg">
+                        <img class="absolute" src="/assets/clip_xtool.svg">
+                    </div>
+                </div>
+                <div class="absolute origin-center w-52" style="transform: translate(80px, 310px) rotate(-15deg);" onmouseover="changeVideoSrc('/assets/xtool.webm')">
+                    <div class="relative hover-accent">
+                        <img class="absolute accent" style="transform: translate(0px, 76px) scale(0.9);" src="/assets/accent_silkscreen.svg">
+                        <img class="absolute" src="/assets/clip_silkscreen.svg" alt="silkscreen clipart">
+                    </div>
+                </div>
+                <div class="absolute origin-center w-52" style="transform: translate(390px, 240px) rotate(-5deg);" onmouseover="changeVideoSrc('/assets/embroidery.webm')">
+                    <div class="relative hover-accent">
+                        <img class="absolute accent" style="transform: translate(-16px, 136px) scale(0.85);" src="/assets/accent_embroidery.svg">
+                        <img class="absolute" src="/assets/clip_embroidery.webp" alt="embroidery clipart">
+                    </div>
+                </div>
+                <div class="absolute origin-center w-64" style="transform: translate(290px, 510px) rotate(0deg);" onmouseover="changeVideoSrc('/assets/creality.webm')">
+                    <div class="relative hover-accent">
+                        <img class="absolute accent" style="transform: translate(70px, -13px) rotate(17deg) scale(-0.8, 0.8);" src="/assets/accent_3dprinter.svg">
+                        <img class="absolute" src="/assets/clip_3dprinter.webp" alt="3d printer clipart">
+                    </div>
+                </div>
+                <h2 class="text-6xl mr-12 text-primary" style="place-self: center end;">Matos</h2>
+                <div class="relative w-96 row-start-2 place-self-end">
+                    <img class="absolute top-0" src="/assets/accent_text.svg" alt="">
+                    <p class="absolute top-12 ml-16 text-2xl w-80 text-primary margarine-regular">Découvre les machines en cliquant dessus !</p>
                 </div>
             </div>
         </div>
@@ -146,7 +171,8 @@ export function render(data) {
             <h2 class="text-6xl text-secondary pb-4">Évènements</h2>
             <img class="absolute bottom-12 right-12" src="/assets/accent_4.svg" alt="">
             <div class="flex p-8 justify-around">
-                ${data.collections.events.map((event) => { 
+                ${data.collections.events.map((event) => {
+                    if (event.data.visibility == "hidden") return;
                     return `
                     <div class="flex justify-center">
                         <a class="card w-96" href="${event.url}">

@@ -6,6 +6,7 @@ date: 2026-02-10
 ---
 
 ## Règlement Intérieur du Fablab Universitaire
+---
 ### 1. Objet et champ d’application
 
 Le présent règlement a pour objectif d’assurer la sécurité des utilisateurs, la bonne utilisation des équipements et le respect du fonctionnement du Fablab. Il s’applique à toute personne entrant dans l’espace, qu’elle soit étudiante, enseignante ou membre du personnel.
