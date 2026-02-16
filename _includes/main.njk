@@ -9,6 +9,7 @@ title: LAB132 - IUT de Troyes
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <meta name="title" content="{{ title }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +38,7 @@ title: LAB132 - IUT de Troyes
         </a>
     </nav>
     {{ content | safe }}
-    <footer class="grid grid-cols-4 py-8 px-16">
+    <footer class="grid grid-cols-2 grid-rows-2 md:grid-cols-4 md:grid-rows-1 py-8 px-16">
         <div class="flex flex-col justify-center items-center">
             <img class="w-40 mt-4 mb-2" src="/assets/logo_lab132_wide.svg" alt="Logo Lab 132">
             <div class="flex flex-row justify-center items-center">

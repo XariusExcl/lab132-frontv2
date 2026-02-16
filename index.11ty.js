@@ -7,11 +7,11 @@ export const data = {
 
 export function render(data) {
   return /*html*/`
-    <section id="main" class="grid grid-cols-3" style="background-color: #FFD203 !important; background: url('/assets/Header_Image.webp') center center / cover no-repeat; width: 100%;">
+    <section id="main" class="md:grid md:grid-cols-3" style="background-color: #FFD203 !important; background: url('/assets/Header_Image.webp') center center / cover no-repeat; width: 100%;">
         <h1 class="hidden">LAB 132 - IUT de Troyes</h1>
         <div class="flex justify-center p-8 col-start-2 col-end-2">
             <div class="flex flex-col">
-                <div class="bg-secondary m-8 p-6 border-8 border-black">
+                <div class="bg-secondary m-2 lg:m-8 p-6 border-8 border-black">
                     <img src="/assets/Logotype_Lab132_XCS.svg" width="320px" alt="lab132 logo">
                 </div>
                 <a href="#inscription" class="self-center">
@@ -26,7 +26,7 @@ export function render(data) {
             </div>
         </div>
         <div class="flex flex-col justify-between col-start-3 col-end-3">
-            <div class="bg-secondary border-8 my-16 p-8 border-black rounded-3xl margarine-regular text-2xl text-primary size-fit">
+            <div class="bg-secondary border-8 my-16 p-4 lg:p-8 border-black rounded-3xl margarine-regular hidden md:block text-2xl text-primary size-fit">
                 ${(() => {
                     const now = new Date();
                     return this.capitalize(now.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"numeric",day:"numeric"}) + " : " + ((now.getDay() == 4)?"OUVERT":"Fermé"));
@@ -44,13 +44,13 @@ export function render(data) {
                         <img class="absolute left-0" src="/assets/accent_1.svg" alt="">
                         <p class="p-4 margarine-regular">Nous sommes ouverts tous les jeudis après-midi.</p>
                         <p class="p-4 margarine-regular">Bâtiment A, salle A132 (à côté de la B.U)</p>
-                        <p class="p-4 margarine-regular">Inscription falcultative</p>
-                        <p class="p-4 margarine-regular">L'usage des machines est gratuit</p>
+                        <p class="p-4 margarine-regular">Inscription falcultative.</p>
+                        <p class="p-4 margarine-regular">L'usage des machines est gratuit.</p>
                     </div>
                 </div>
-                <div class="self-end w-2/3">
+                <div class="md:self-end w-2/3">
                     <form action="" method="post" class="flex flex-col my-16">
-                        <img class="absolute left-16 w-16 mt-16" src="/assets/accent_2.svg" alt="">
+                        <img class="hidden md:block absolute left-16 w-16 mt-16" src="/assets/accent_2.svg" alt="">
                         <div class="grid grid-cols-3 grid-rows-3" style="grid-template-columns: 48px 140px 3fr;">
                             <img class="w-12 p-2 pb-0" src="/assets/icon_thumbprint.svg" alt="">
                             <label class="p-4 pb-0 text-2xl margarine-regular" for="maker">Maker :</label>
@@ -66,7 +66,7 @@ export function render(data) {
                     </form>
                 </div>
             </div>
-            <div class="flex flex-col">
+            <div class="hidden md:flex md:flex-col">
                 <div class="flex flex-col self-end items-center margarine-regular mt-8 mr-24 text-2xl">
                     <p>
                         ${this.capitalize(new Date().toLocaleString("fr-FR", {month:"long"}))}
@@ -96,51 +96,53 @@ export function render(data) {
                 <div class="self-end relative -bottom-32 right-11 text-5xl margarine-regular">
                     Inscription
                 </div>
-                <img class="absolute right-0 bottom-3 z-10"  src="/assets/accent_3a.svg" alt="">
+                <img class="hidden md:block absolute right-0 bottom-3 z-10"  src="/assets/accent_3a.svg" alt="">
             </div>
         </div>
     </section>
     <section id="matos" class="relative bg-secondary">
-        <img class="absolute top-0 right-1 w-64" src="/assets/accent_3b.svg" style="margin-top:-18.5rem" alt="">
-        <div class="grid" style="grid-template-columns: 30% 70%; height: 820px">
+        <img class="hidden md:block absolute top-0 right-1 w-64" src="/assets/accent_3b.svg" style="margin-top:-18.5rem" alt="">
+        <div class="md:grid" style="grid-template-columns: 30% 70%; height: 820px">
             <div class="bg-primary">
                 <video id="machineVideo" class="h-full w-full object-cover" src="/assets/xtool.webm" autoplay muted loop></video>
             </div>
-            <div class="grid grid-rows-3 p-8">
-                <div class="absolute origin-center w-72" style="transform: translate(110px, 10px) rotate(-6deg);" onmouseover="changeVideoSrc('/assets/cricut.webm')">
+            <div class="p-8 hidden md:grid relative">
+                <div class="absolute origin-center w-72" style="transform: rotate(-6deg);top: 5%;left: 11%;" onmouseover="changeVideoSrc('/assets/cricut.webm')">
                     <div class="relative hover-accent">
                         <img class="absolute accent" style="transform: translate(-27px, 51px) scale(0.7);" src="/assets/accent_cricut.svg">
                         <img class="absolute" src="/assets/clip_cricut.svg" alt="cricut clipart">
                     </div>
                 </div>
-                <div class="absolute origin-center w-80" style="transform: translate(600px, 22px) rotate(0deg);" onmouseover="changeVideoSrc('/assets/xtool.webm')">
+                <div class="absolute origin-center w-80" style="transform: rotate(0deg);top: 5%;left: 52%;" onmouseover="changeVideoSrc('/assets/xtool.webm')">
                     <div class="relative hover-accent">
                         <img class="absolute accent" style="transform: translate(-4px, -24px) scale(0.8);" src="/assets/accent_xtool.svg">
                         <img class="absolute" src="/assets/clip_xtool.svg">
                     </div>
                 </div>
-                <div class="absolute origin-center w-52" style="transform: translate(80px, 310px) rotate(-15deg);" onmouseover="changeVideoSrc('/assets/xtool.webm')">
+                <div class="absolute origin-center w-52" style="transform: rotate(-15deg);top: 40%;left: 5%;" onmouseover="changeVideoSrc('/assets/xtool.webm')">
                     <div class="relative hover-accent">
                         <img class="absolute accent" style="transform: translate(0px, 76px) scale(0.9);" src="/assets/accent_silkscreen.svg">
                         <img class="absolute" src="/assets/clip_silkscreen.svg" alt="silkscreen clipart">
                     </div>
                 </div>
-                <div class="absolute origin-center w-52" style="transform: translate(390px, 240px) rotate(-5deg);" onmouseover="changeVideoSrc('/assets/embroidery.webm')">
+                <div class="absolute origin-center w-52" style="transform: rotate(-5deg);top: 32%;left: 36%;" onmouseover="changeVideoSrc('/assets/embroidery.webm')">
                     <div class="relative hover-accent">
                         <img class="absolute accent" style="transform: translate(-16px, 136px) scale(0.85);" src="/assets/accent_embroidery.svg">
                         <img class="absolute" src="/assets/clip_embroidery.webp" alt="embroidery clipart">
                     </div>
                 </div>
-                <div class="absolute origin-center w-64" style="transform: translate(290px, 510px) rotate(0deg);" onmouseover="changeVideoSrc('/assets/creality.webm')">
+                <div class="absolute origin-center w-64" style="transform: rotate(0deg);top: 64%;left: 26%;" onmouseover="changeVideoSrc('/assets/creality.webm')">
                     <div class="relative hover-accent">
                         <img class="absolute accent" style="transform: translate(70px, -13px) rotate(17deg) scale(-0.8, 0.8);" src="/assets/accent_3dprinter.svg">
                         <img class="absolute" src="/assets/clip_3dprinter.webp" alt="3d printer clipart">
                     </div>
                 </div>
-                <h2 class="text-6xl mr-12 text-primary" style="place-self: center end;">Matos</h2>
-                <div class="relative w-96 row-start-2 place-self-end">
-                    <img class="absolute top-0" src="/assets/accent_text.svg" alt="">
-                    <p class="absolute top-12 ml-16 text-2xl w-80 text-primary margarine-regular">Découvre les machines en cliquant dessus !</p>
+                <div class="absolute bottom-16 right-16">
+                    <h2 class="text-6xl mr-12 text-primary text-right mb-16">Matos</h2>
+                    <div class="relative w-96">
+                        <img src="/assets/accent_text.svg" alt="">
+                        <p class="absolute top-12 left-16 text-2xl w-80 text-primary margarine-regular">Découvre les machines en cliquant dessus !</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -169,14 +171,14 @@ export function render(data) {
     <section id="events">
         <div class="relative bg-primary p-8">
             <h2 class="text-6xl text-secondary pb-4">Évènements</h2>
-            <img class="absolute bottom-12 right-12" src="/assets/accent_4.svg" alt="">
+            <img class="hidden md:block absolute bottom-12 right-12" src="/assets/accent_4.svg" alt="">
             <div class="flex p-8 justify-around">
                 ${data.collections.events.map((event) => {
                     if (event.data.visibility == "hidden") return;
                     return `
                     <div class="flex justify-center">
                         <a class="card w-96" href="${event.url}">
-                            <figure class="h-72 rounded-t-2xl" style="background-image: url('https://placehold.co/384x288');">
+                            <figure class="h-72 rounded-t-2xl bg-accent" style="background-image: url('${event.data.thumbnail ?? "/assets/Header_Image.webp" }');background-size: cover; background-position: center;">
                                 <div class="relative top-4 left-4 inline-flex px-2 py-1 bg-secondary text-primary w-auto max-w-max margarine-regular">
                                     <div class="flex flex-col items-center">
                                         <span class="text-xl">${event.date.getDay()}</span>
@@ -211,15 +213,15 @@ export function render(data) {
     </section>
     <section id="contact" class="bg-secondary text-primary">
         <div class="flex flex-col items-center py-16">
-            <img class="absolute left-12" src="/assets/accent_5.svg" alt="">
-            <div class="w-1/3 flex flex-col items-center text-primary">
+            <img class="hidden md:block absolute left-12" src="/assets/accent_5.svg" alt="">
+            <div class="md:w-1/3 flex flex-col items-center text-primary">
                 <p class="text-3xl p-8 margarine-regular">Des questions ?</p>
                 <p class="text-sm p-8">Laissez-nous un message, nous vous répondrons dès que possible.</p>
-                <form class="w-full flex flex-col" action="" method="post">
-                    <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" placeholder="Votre nom"/>
-                    <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" placeholder="Votre email"/>
-                    <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" placeholder="Votre promo/parcours (MMI, GMP, CJ...)"/>
-                    <textarea class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm h-36 resize-none" placeholder="Message" style="vertical-align: top;"></textarea>
+                <form class="w-full flex flex-col" id="contactForm" method="POST" action="messagerie.php">
+                    <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" name="name" placeholder="Votre nom"/>
+                    <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" name="email" placeholder="Votre email"/>
+                    <input class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm" type="text" name="promo" placeholder="Votre promo/parcours (MMI, GMP, CJ...)"/>
+                    <textarea class="p-3 m-2 border border-primary rounded-lg bg-transparent placeholder:text-gray-700 placeholder:text-sm h-36 resize-none" name="message" placeholder="Message" style="vertical-align: top;"></textarea>
                     <button class="m-4" type="submit"><span class="text-xl text-white bg-primary py-2 px-12 rounded-full margarine-regular">Envoyer</span></button>
                 </form>
             </div>

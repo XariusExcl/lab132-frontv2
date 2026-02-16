@@ -3,17 +3,19 @@ title: LAB132 - Articles
 layout: main.njk
 ---
 
-<section id="main" class="flex flex-col relative py-32" style="background-color: #FFD203 !important;  width: 100%;">
-    <div class="opacity-50 w-full h-full absolute top-0 bottom-0"  style="background: url('/assets/Header_Image.webp') center center / cover no-repeat;">
-    </div>
-    <h1 class="text-7xl p-8 w-full text-primary text-center">{{ title }}</h1>
-    <strong class="text-lg text-center text-primary opacity-80 italic pl-2 font-bold">{{ date|date() }}</strong></span>
+<section id="main" class="flex flex-col relative py-32 bg-secondary">
+{% if thumbnail | length == 0 %}
+  <div class="opacity-50 w-full h-full absolute top-0 bottom-0" style="background: url('/assets/Header_Image.webp') center center / cover no-repeat;"></div>
+{% else %}
+  <div class="opacity-50 w-full h-full absolute top-0 bottom-0" style="background: url('{{ thumbnail }}') center center / cover no-repeat;"></div>
+{% endif %}
+  <h1 class="relative z-10 text-7xl p-8 w-full text-primary text-center">{{ title }}</h1>
+  <strong class="text-lg text-center text-primary opacity-80 italic pl-2 font-bold">{{ date|date() }}</strong></span>
 </section>
 <div id="content" class="flex justify-center w-full">
-    <div class="blog flex max-w-5xl">
-      <article class="bg-primary w-full p-8 rounded-xl">
-        {{ content | safe }}
-      </article>
-    </div>
+  <div class="blog flex max-w-5xl">
+    <article class="bg-primary w-full p-8 rounded-xl">
+      {{ content | safe }}
+    </article>
   </div>
 </div>
