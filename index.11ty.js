@@ -36,12 +36,12 @@ export function render(data) {
         </div>
     </section>
     <section class="relative" id="inscription">
-        <div class="flex justify-between p-24 pb-0">
+        <div class="flex justify-between p-12 md:p-24 pb-0">
             <div class="flex-grow[2] flex flex-col">
                 <div>
-                    <h2 class="text-6xl pb-4">Infos pratiques</h2>
-                    <div class="p-4 pl-16 text-2xl">
-                        <img class="absolute left-0" src="/assets/accent_1.svg" alt="">
+                    <h2 class="text-3xl md:text-6xl pb-4">Infos pratiques</h2>
+                    <div class="p-4 pl-16 text-lg md:text-2xl">
+                        <img class="absolute -left-8 md:left-0" src="/assets/accent_1.svg" alt="">
                         <p class="p-4 margarine-regular">Nous sommes ouverts tous les jeudis après-midi.</p>
                         <p class="p-4 margarine-regular">Bâtiment A, salle A132 (à côté de la B.U)</p>
                         <p class="p-4 margarine-regular">Inscription falcultative.</p>
@@ -53,13 +53,13 @@ export function render(data) {
                         <img class="hidden md:block absolute left-16 w-16 mt-16" src="/assets/accent_2.svg" alt="">
                         <div class="grid grid-cols-3 grid-rows-3" style="grid-template-columns: 48px 140px 3fr;">
                             <img class="w-12 p-2 pb-0" src="/assets/icon_thumbprint.svg" alt="">
-                            <label class="p-4 pb-0 text-2xl margarine-regular" for="maker">Maker :</label>
+                            <label class="p-4 pb-0 text-lg md:text-2xl margarine-regular" for="maker">Maker :</label>
                             <input class="bg-transparent border-b border-white" type="text" name="maker" id="maker">
                             <img class="w-12 p-2 pb-0" src="/assets/icon_calendar.svg" alt="">
-                            <label class="p-4 pb-0 text-2xl margarine-regular" for="maker">Date :</label>
+                            <label class="p-4 pb-0 text-lg md:text-2xl margarine-regular" for="maker">Date :</label>
                             <input class="bg-transparent border-b border-white" type="text" name="date" id="date">
                             <img class="w-12 p-2 pb-0" src="/assets/icon_cogs.svg" alt="">
-                            <label class="p-4 pb-0 text-2xl margarine-regular" for="maker">Machine :</label>
+                            <label class="p-4 pb-0 text-lg md:text-2xl margarine-regular" for="maker">Machine :</label>
                             <input class="bg-transparent border-b border-white" type="text" name="machine" id="machine">
                         </div>
                         <button type="submit" class="px-8 py-1 mt-8 rounded-xl border-2 self-end text-xl margarine-regular">Valider</button>
@@ -100,13 +100,13 @@ export function render(data) {
             </div>
         </div>
     </section>
-    <section id="matos" class="relative bg-secondary">
-        <img class="hidden md:block absolute top-0 right-1 w-64" src="/assets/accent_3b.svg" style="margin-top:-18.5rem" alt="">
-        <div class="md:grid" style="grid-template-columns: 30% 70%; height: 820px">
+    <section id="matos" class="relative bg-secondary" style="max-height: 820px">
+        <img class="hidden lg:block absolute top-0 right-1 w-64" src="/assets/accent_3b.svg" style="margin-top:-18.5rem" alt="">
+        <div class="lg:grid lg:h-[820px]" style="grid-template-columns: 30% 70%;">
             <div class="bg-primary">
                 <video id="machineVideo" class="h-full w-full object-cover" src="/assets/xtool.webm" autoplay muted loop></video>
             </div>
-            <div class="p-8 hidden md:grid relative">
+            <div class="p-8 hidden lg:grid relative">
                 <div class="absolute origin-center w-72" style="transform: rotate(-6deg);top: 5%;left: 11%;" onmouseover="changeVideoSrc('/assets/cricut.webm')">
                     <div class="relative hover-accent">
                         <img class="absolute accent" style="transform: translate(-27px, 51px) scale(0.7);" src="/assets/accent_cricut.svg">
@@ -155,11 +155,10 @@ export function render(data) {
             <img class="sepia brightness-75" src="/assets/img_3.webp">
             <img class="sepia brightness-75" src="/assets/img_4.webp">
             <img class="sepia brightness-75" src="/assets/img_5.webp">
-            <img class="sepia brightness-75" src="/assets/img_6.webp">
+            <img class="sepia brightness-75" src="/assets/img_11.webp">
         </div>
         <div class="h-72 flex carousel-track-reverse" style="width: max-content;">
             <img class="sepia brightness-75" src="/assets/img_7.webp">
-            <img class="sepia brightness-75" src="/assets/img_11.webp">
             <img class="sepia brightness-75" src="/assets/img_8.jpg">
             <img class="sepia brightness-75" src="/assets/img_12.webp">
             <img class="sepia brightness-75" src="/assets/img_9.webp">

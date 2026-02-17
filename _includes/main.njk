@@ -9,7 +9,6 @@ title: LAB132 - IUT de Troyes
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <meta name="title" content="{{ title }}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,20 +20,20 @@ title: LAB132 - IUT de Troyes
 </head>
 <body>
     <nav class="w-full flex p-4 justify-around bg-primary">
-        <a class="w-40" href="/">
+        <a class="hidden md:block w-40" href="/">
             <img class="mt-4" src="/assets/logo_lab132_wide.svg" alt="Logo Lab 132">
         </a>
         <a href="/#inscription">
-            <div class="p-4 text-2xl margarine-regular">Inscription</div>
+            <div class="p-4 text-lg md:text-2xl margarine-regular">Inscription</div>
         </a>
         <a href="/#matos">
-            <div class="p-4 text-2xl margarine-regular">Matos</div>
+            <div class="p-4 text-lg md:text-2xl margarine-regular">Matos</div>
         </a>
         <a href="/blog">
-            <div class="p-4 text-2xl margarine-regular">Articles</div>
+            <div class="p-4 text-lg md:text-2xl margarine-regular">Articles</div>
         </a>
         <a href="/#contact">
-            <div class="p-4 text-2xl margarine-regular">Contact</div>
+            <div class="p-4 text-lg md:text-2xl margarine-regular">Contact</div>
         </a>
     </nav>
     {{ content | safe }}
