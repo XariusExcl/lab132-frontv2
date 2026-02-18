@@ -1,3 +1,5 @@
+import _event_card from '../_includes/_event_card.js';
+
 export const data = {
     eleventyImport: {
         collections: ["events"]
@@ -14,40 +16,10 @@ export function render(data) {
     </section>
     <section id="main" class="p-16 bg-primary text-secondary">
         <h2 class="text-6xl text-secondary pb-4">Évènements</h2>
-        <div class="grid grid-cols-3 my-8">
+        <div class="flex flex-wrap justify-around my-8">
             ${data.collections.events.map((event) => { 
-                return `
-                <div class="flex justify-center">
-                    <a class="card w-96" href="${event.url}">
-                        <figure class="h-72 rounded-t-2xl" style="background-image: url('https://placehold.co/384x288');">
-                            <div class="relative top-4 left-4 inline-flex px-2 py-1 bg-secondary text-primary w-auto max-w-max margarine-regular">
-                                <div class="flex flex-col items-center">
-                                    <span class="text-xl">${event.date.getDay()}</span>
-                                    <span class="text-lg -mt-2">${this.capitalize(event.date.toLocaleDateString("fr-FR", {month:"short"}))}</span>
-                                </div>
-                                ${((event.data.dateend != undefined) ?
-                                    `<div class="w-px bg-primary self-stretch mx-2 my-2"></div>
-                                    <div class="flex flex-col items-center">
-                                        <span class="text-xl">${event.data.dateend.getDay()}</span>
-                                        <span class="text-lg -mt-2">${this.capitalize(event.data.dateend.toLocaleDateString("fr-FR", {month:"short"}))}</span>
-                                    </div>`
-                                :'')}
-                            </div>
-                        </figure>
-                        <div class="bg-secondary text-primary p-2 rounded-b-2xl">
-                            <h3 class="text-xl">${event.data.title}</h3>
-                            <p>${event.data.description}</p>
-                            <hr class="m-0.5 mt-1 border-primary">
-                            <p class="text-xs p-1">${event.data.location}</p>
-                            <div>
-                                ${event.data.labels.split(" ").map((label) => {
-                                    return `<span class="text-xs px-2 rounded-full border border-primary">${label.toUpperCase()}</span>`
-                                }).join("\n")}
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                `
+                if (event.data.visibility == "hidden") return;
+                return _event_card(event)
             }).join("\n")}
         </div>
         <h2 class="text-6xl text-secondary pb-4">Tutoriels</h2>

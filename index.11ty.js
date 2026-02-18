@@ -1,3 +1,5 @@
+import _event_card from "./_includes/_event_card.js";
+
 export const data = {
     eleventyImport: {
         collections: ["events"]
@@ -14,8 +16,14 @@ export function render(data) {
                 <div class="bg-secondary m-2 lg:m-8 p-6 border-8 border-black">
                     <img src="/assets/Logotype_Lab132_XCS.svg" width="320px" alt="lab132 logo">
                 </div>
+                <div class="block md:hidden bg-secondary border-8 my-8 w-full text-center p-4 lg:p-8 border-black rounded-3xl margarine-regular text-2xl text-primary size-fit">
+                    ${(() => {
+                        const now = new Date();
+                        return this.capitalize(now.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"numeric",day:"numeric"}) + " : " + ((now.getDay() == 4)?"OUVERT":"Fermé"));
+                    })()}
+                </div>
                 <a href="#inscription" class="self-center">
-                    <div class="bg-secondary border-8 m-8 border-black rounded-full w-32 h-32">
+                    <div class="bg-secondary border-8 m-8 border-black rounded-full w-24 h-24 md:w-32 md:h-32">
                         <svg class="pt-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:serif="http://www.serif.com/" width="100%" height="100%" viewBox="0 0 16 16" version="1.1" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                             <g transform="matrix(-1.038715,0,-0,-1.093628,15.883392,16.795727)">
                                 <path d="M6.465,5.819C6.73,5.482 7.147,5.284 7.59,5.284C8.032,5.284 8.449,5.482 8.714,5.819C9.554,6.882 10.714,8.353 11.664,9.556C11.984,9.961 12.035,10.502 11.797,10.954C11.559,11.406 11.072,11.692 10.54,11.692C8.754,11.692 6.451,11.692 4.661,11.692C4.125,11.692 3.634,11.404 3.394,10.948C3.155,10.492 3.206,9.947 3.528,9.539C4.476,8.339 5.629,6.877 6.465,5.819Z"/>
@@ -85,10 +93,10 @@ export function render(data) {
                             const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
                             const jsDay = firstDay.getDay();
                             // remap dow from 0=Sunday, 1=Monday... to Monday=0, Sunday=6
-                            let offset = (jsDay + 6) % 7;
-                            let blanks = Array(offset).fill('<span></span>').join('');
+                            const offset = (jsDay + 6) % 7;
+                            const blanks = Array(offset).fill('<span></span>').join('');
                             const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-                            let days = Array.from({length: daysInMonth}, (_, i) => `${(((i + offset) % 7)==3)?`<span class="w-full h-full bg-white text-primary rounded-full flex justify-center items-center">`:`<span class="m-auto">`}${i + 1}</span>`).join('');
+                            const days = Array.from({length: daysInMonth}, (_, i) => `${(((i + offset) % 7)==3)?`<span class="w-full h-full bg-white text-primary rounded-full flex justify-center items-center">`:`<span class="m-auto">`}${i + 1}</span>`).join('');
                             return blanks + days;
                         })()}
                     </div>
@@ -119,7 +127,7 @@ export function render(data) {
                         <img class="absolute" src="/assets/clip_xtool.svg">
                     </div>
                 </div>
-                <div class="absolute origin-center w-52" style="transform: rotate(-15deg);top: 40%;left: 5%;" onmouseover="changeVideoSrc('/assets/xtool.webm')">
+                <div class="absolute origin-center w-52" style="transform: rotate(-15deg);top: 40%;left: 5%;" onmouseover="changeVideoSrc('/assets/silkscreen.webm')">
                     <div class="relative hover-accent">
                         <img class="absolute accent" style="transform: translate(0px, 76px) scale(0.9);" src="/assets/accent_silkscreen.svg">
                         <img class="absolute" src="/assets/clip_silkscreen.svg" alt="silkscreen clipart">
@@ -168,44 +176,15 @@ export function render(data) {
         </div>
     </section>
     <section id="events">
-        <div class="relative bg-primary p-8">
+        <div class="relative bg-primary p-8 md:px-16">
             <h2 class="text-6xl text-secondary pb-4">Évènements</h2>
             <img class="hidden md:block absolute bottom-12 right-12" src="/assets/accent_4.svg" alt="">
-            <div class="flex p-8 justify-around">
-                ${data.collections.events.map((event) => {
+            <div class="flex flex-wrap p-8 justify-around">
+                ${data.collections.events.sort((a, b) => {
+                    return new Date(a.data.date) - new Date(b.data.date);
+                }).slice(0, 3).map((event) => {
                     if (event.data.visibility == "hidden") return;
-                    return `
-                    <div class="flex justify-center">
-                        <a class="card w-96" href="${event.url}">
-                            <figure class="h-72 rounded-t-2xl bg-accent" style="background-image: url('${event.data.thumbnail ?? "/assets/Header_Image.webp" }');background-size: cover; background-position: center;">
-                                <div class="relative top-4 left-4 inline-flex px-2 py-1 bg-secondary text-primary w-auto max-w-max margarine-regular">
-                                    <div class="flex flex-col items-center">
-                                        <span class="text-xl">${event.date.getDay()}</span>
-                                        <span class="text-lg -mt-2">${this.capitalize(event.date.toLocaleDateString("fr-FR", {month:"short"}))}</span>
-                                    </div>
-                                    ${((event.data.dateend != undefined) ?
-                                        `<div class="w-px bg-primary self-stretch mx-2 my-2"></div>
-                                        <div class="flex flex-col items-center">
-                                            <span class="text-xl">${event.data.dateend.getDay()}</span>
-                                            <span class="text-lg -mt-2">${this.capitalize(event.data.dateend.toLocaleDateString("fr-FR", {month:"short"}))}</span>
-                                        </div>`
-                                    :'')}
-                                </div>
-                            </figure>
-                            <div class="bg-secondary text-primary p-2 rounded-b-2xl">
-                                <h3 class="text-xl">${event.data.title}</h3>
-                                <p>${event.data.description}</p>
-                                <hr class="m-0.5 mt-1 border-primary">
-                                <p class="text-xs p-1">${event.data.location}</p>
-                                <div>
-                                    ${event.data.labels.split(" ").map((label) => {
-                                        return `<span class="text-xs px-2 rounded-full border border-primary">${label.toUpperCase()}</span>`
-                                    }).join("\n")}
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    `
+                    return _event_card(event)
                 }).join("\n")}
             </div>
         </div>
