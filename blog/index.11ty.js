@@ -15,17 +15,22 @@ export function render(data) {
         <h1 class="text-7xl p-8 my-32 w-full text-primary text-center">Articles</h1>
     </section>
     <section id="main" class="p-16 bg-primary text-secondary">
+        <h2 class="text-6xl text-secondary pb-4">Tutoriels</h2>
+        <div class="flex flex-wrap justify-around my-8">
+            ${data.collections.tutorials?.map((tutorials) => {
+                if (tutorials.data.visibility == "hidden") return;
+                return _event_card(tutorials)
+            }).join("\n")}
+        </div>
         <h2 class="text-6xl text-secondary pb-4">Évènements</h2>
         <div class="flex flex-wrap justify-around my-8">
-            ${data.collections.events.map((event) => { 
+            ${data.collections.events?.sort((a, b) => {
+                return new Date(a.data.date) - new Date(b.data.date);
+            }).map((event) => {
                 if (event.data.visibility == "hidden") return;
                 return _event_card(event)
             }).join("\n")}
         </div>
-        <h2 class="text-6xl text-secondary pb-4">Tutoriels</h2>
-        <div class="my-8">
-        
-        <div>
     </section>
   `;
 }

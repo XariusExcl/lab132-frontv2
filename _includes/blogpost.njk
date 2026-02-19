@@ -12,7 +12,8 @@ layout: main.njk
   <h1 class="relative z-10 text-7xl p-8 w-full text-primary text-center">{{ title }}</h1>
   <strong class="text-lg text-center text-primary opacity-80 italic pl-2 font-bold">{{ date|date() }}</strong></span>
 </section>
-<div id="content" class="flex justify-center w-full">
+<div id="content" class="flex flex-col items-center w-full">
+  <a href="/blog" class="px-8 py-1 top-8 mt-8 ml-8 rounded-xl border-2 border-secondary text-secondary bg-primary self-start text-xl margarine-regular sticky">< retour</a>
   <div class="blog flex max-w-5xl">
     <article class="bg-primary w-full p-8 rounded-xl">
       {{ content | safe }}

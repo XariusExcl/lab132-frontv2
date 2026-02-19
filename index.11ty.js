@@ -104,7 +104,7 @@ export function render(data) {
                 <div class="self-end relative -bottom-32 right-11 text-5xl margarine-regular">
                     Inscription
                 </div>
-                <img class="hidden md:block absolute right-0 bottom-3 z-10"  src="/assets/accent_3a.svg" alt="">
+                <img class="hidden md:block absolute right-0 bottom-3 z-10" src="/assets/accent_3a.svg" alt="">
             </div>
         </div>
     </section>
@@ -187,6 +187,7 @@ export function render(data) {
                     return _event_card(event)
                 }).join("\n")}
             </div>
+            <a href="/blog" class="px-8 py-1 mt-8 rounded-xl border-2 border-secondary text-secondary self-end text-xl margarine-regular">Voir plus</a>
         </div>
     </section>
     <section id="contact" class="bg-secondary text-primary">
@@ -205,17 +206,5 @@ export function render(data) {
             </div>
         </div>
     </section>
-    <script>
-        const machineVideo = document.getElementById('machineVideo');
-        const changeVideoSrc = (src) => {
-            if (machineVideo.src.includes(src)) return;
-            machineVideo.src = src;
-            machineVideo.play();
-        }
-        document.querySelectorAll('#caroussel > div').forEach((track, index) => {
-            const images = Array.from(track.querySelectorAll('img'));
-            images.forEach(img => track.appendChild(img.cloneNode(true)));
-        });
-    </script>
     `
 }
