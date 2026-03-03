@@ -11,6 +11,7 @@ export default function(eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("main.js");
+  eleventyConfig.addPassthroughCopy("favicon.png");
   eleventyConfig.addFilter("date", function(date) {
     const str = date.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"long",day:"numeric"});
     return str.charAt(0).toUpperCase() + String(str).slice(1);
