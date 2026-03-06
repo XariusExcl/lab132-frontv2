@@ -12,6 +12,7 @@ export default function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("main.js");
   eleventyConfig.addPassthroughCopy("favicon.png");
+  eleventyConfig.addPassthroughCopy("dates.json");
   eleventyConfig.addFilter("date", function(date) {
     const str = date.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"long",day:"numeric"});
     return str.charAt(0).toUpperCase() + String(str).slice(1);
@@ -53,6 +54,6 @@ export default function(eleventyConfig) {
   }})});
 
   eleventyConfig.setServerOptions({
-    watch: ["dist/style.css"]
+    watch: ["dist/style.css", "main.js"]
   })
 }

@@ -19,7 +19,7 @@ export function render(data) {
                 <div class="block md:hidden bg-secondary border-8 my-8 w-full text-center p-4 lg:p-8 border-black rounded-3xl margarine-regular text-2xl text-primary size-fit">
                     ${(() => {
                         const now = new Date();
-                        return this.capitalize(now.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"numeric",day:"numeric"}) + " : " + ((now.getDay() == 4)?"OUVERT":"Fermé"));
+                        return this.capitalize(now.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"numeric",day:"numeric"}));
                     })()}
                 </div>
                 <a href="#inscription" class="self-center">
@@ -34,10 +34,10 @@ export function render(data) {
             </div>
         </div>
         <div class="flex flex-col justify-between col-start-3 col-end-3">
-            <div class="bg-secondary border-8 my-16 p-4 lg:p-8 border-black rounded-3xl margarine-regular hidden md:block text-2xl text-primary size-fit">
+            <div id="today" class="bg-secondary border-8 my-16 p-4 lg:p-8 border-black rounded-3xl margarine-regular hidden md:block text-2xl text-primary size-fit">
                 ${(() => {
                     const now = new Date();
-                    return this.capitalize(now.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"numeric",day:"numeric"}) + " : " + ((now.getDay() == 4)?"OUVERT":"Fermé"));
+                    return this.capitalize(now.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"numeric",day:"numeric"}));
                 })()}
             </div>
             <img class="self-end w-64 p-6" src="/assets/logo_iut_troyes_b.webp" alt="Logo IUT de Troyes">
@@ -75,28 +75,19 @@ export function render(data) {
                 </div>
             </div>
             <div class="hidden md:flex md:flex-col">
+                <span class="hidden w-full h-full border-2 border-primary bg-white text-primary rounded-full justify-center items-center"></span>
                 <div class="flex flex-col self-end items-center margarine-regular mt-8 mr-24 text-2xl">
                     <p>
                         ${this.capitalize(new Date().toLocaleString("fr-FR", {month:"long"}))}
                     </p>
-                    <div class="grid grid-cols-7 grid-rows-6 mt-4" style="grid-template-columns:repeat(7, 2.75rem);grid-template-rows:2.75rem 1px repeat(5, 2.75rem);">
-                        <span class="m-auto">Lu</span>
-                        <span class="m-auto">Ma</span>
-                        <span class="m-auto">Me</span>
-                        <span class="m-auto">Je</span>
-                        <span class="m-auto">Ve</span>
-                        <span class="m-auto">Sa</span>
-                        <span class="m-auto">Di</span>
-                        <span class="row-start-2 col-start-1 col-end-8 border border-white"></span>
+                    <div id="calendar" class="grid grid-cols-7 grid-rows-6 mt-4" style="grid-template-columns:repeat(7, 2.75rem);grid-template-rows:2.75rem 1px repeat(5, 2.75rem);">
+                        <span class="m-auto">Lu</span><span class="m-auto">Ma</span><span class="m-auto">Me</span><span class="m-auto">Je</span><span class="m-auto">Ve</span><span class="m-auto">Sa</span><span class="m-auto">Di</span><span class="row-start-2 col-start-1 col-end-8 border border-white"></span>
                         ${(() => {
                             const now = new Date();
-                            const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
-                            const jsDay = firstDay.getDay();
-                            // remap dow from 0=Sunday, 1=Monday... to Monday=0, Sunday=6
-                            const offset = (jsDay + 6) % 7;
+                            const offset = (new Date(now.getFullYear(), now.getMonth(), 1).getDay() + 6) % 7;
                             const blanks = Array(offset).fill('<span></span>').join('');
                             const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-                            const days = Array.from({length: daysInMonth}, (_, i) => `${(((i + offset) % 7)==3)?`<span class="w-full h-full bg-white text-primary rounded-full flex justify-center items-center">`:`<span class="m-auto">`}${i + 1}</span>`).join('');
+                            const days = Array.from({length: daysInMonth}, (_, i) => `<span class="m-auto">${i + 1}</span>`).join('');
                             return blanks + days;
                         })()}
                     </div>
