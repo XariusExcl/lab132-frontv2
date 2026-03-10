@@ -16,7 +16,7 @@ export function render(data) {
                 <div class="bg-secondary m-2 lg:m-8 p-6 border-8 border-black">
                     <img src="/assets/Logotype_Lab132_XCS.svg" width="320px" alt="lab132 logo">
                 </div>
-                <div class="block md:hidden bg-secondary border-8 my-8 w-full text-center p-4 lg:p-8 border-black rounded-3xl margarine-regular text-2xl text-primary size-fit">
+                <div id="todaysm" class="block md:hidden bg-secondary border-8 my-8 w-full text-center p-4 lg:p-8 border-black rounded-3xl margarine-regular text-2xl text-primary size-fit">
                     ${(() => {
                         const now = new Date();
                         return this.capitalize(now.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"numeric",day:"numeric"}));

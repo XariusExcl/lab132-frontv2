@@ -1,5 +1,6 @@
 const machineVideo = document.getElementById('machineVideo');
 const today = document.getElementById('today');
+const todaysm = document.getElementById('todaysm');
 const calendar = document.getElementById('calendar');
 const changeVideoSrc = (src) => {
     if (machineVideo.src.includes(src)) return;
@@ -14,7 +15,9 @@ document.querySelectorAll('#caroussel > div').forEach((track, index) => {
 fetch("/dates.json").then((response) => {
     response.json().then((data) => {
         const now = new Date();
-        today.innerText += " : " + (data.dates.includes(now.toLocaleDateString("fr-FR",{year:"numeric",month:"numeric",day:"numeric"}))?"OUVERT":"Fermé");
+        const todaystr = now.toLocaleDateString("fr-FR",{weekday:"short",year:"numeric",month:"numeric",day:"numeric"}) + " : " + (data.dates.includes(now.toLocaleDateString("fr-FR",{year:"numeric",month:"numeric",day:"numeric"}))?"OUVERT":"Fermé");
+        today.innerText = todaystr;
+        todaysm.innerText = todaystr;
 
         const offset = (new Date(now.getFullYear(), now.getMonth(), 1).getDay() + 6) % 7 + 9;
         calendar.childNodes[now.getDate()+offset].classList = "w-full h-full border-2 border-white rounded-full flex justify-center items-center";
