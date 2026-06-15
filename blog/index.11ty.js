@@ -1,4 +1,5 @@
 import _event_card from '../_includes/_event_card.js';
+import _tutorial_card from '../_includes/_tutorial_card.js';
 
 export const data = {
     eleventyImport: {
@@ -19,7 +20,7 @@ export function render(data) {
         <div class="flex flex-wrap justify-around my-8">
             ${data.collections.tutorials?.map((tutorials) => {
                 if (tutorials.data.visibility == "hidden") return;
-                return _event_card(tutorials)
+                return _tutorial_card(tutorials)
             }).join("\n")}
         </div>
         <h2 class="text-6xl text-secondary pb-4">Évènements</h2>
